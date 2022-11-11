@@ -1,14 +1,32 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-
-import "src/styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import { lazy, StrictMode, Suspense } from "react";
+import { createRoot } from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "src/styles/globals.css";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
+const Signin = lazy(() => import("src/pages/signin"));
+const IndexPage = lazy(() => import("src/pages/index"));
+
+const router = createBrowserRouter(
+  [
+    {
+      path: "/signin",
+      element: <Signin />,
+    },
+    {
+      path: "/",
+      element: <IndexPage />,
+    },
+  ],
+  { basename: "/" }
+);
+
+createRoot(document.getElementById("root") as HTMLElement).render(
+  <StrictMode>
     <ChakraProvider>
-      <App />
+      <Suspense>
+        <RouterProvider router={router} />
+      </Suspense>
     </ChakraProvider>
-  </React.StrictMode>
+  </StrictMode>
 );
