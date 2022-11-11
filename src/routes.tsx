@@ -1,21 +1,34 @@
 import { lazy } from "react";
-import { useRoutes } from "react-router-dom";
+import { createBrowserRouter, useRoutes } from "react-router-dom";
 
 const Signin = lazy(() => import("src/pages/signin"));
 const Test = lazy(() => import("src/pages/index"));
 
 const Routes = () => {
-  const element = useRoutes([
-    {
-      path: "/signin",
-      element: <Signin />,
-    },
-    {
-      path: "/",
-      element: <Test />,
-    },
-  ]);
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/signin",
+        element: <Signin />,
+      },
+      {
+        path: "/",
+        element: <Test />,
+      },
+    ],
+    { basename: "/" }
+  );
+  //   const element = useRoutes([
+  //     {
+  //       path: "/signin",
+  //       element: <Signin />,
+  //     },
+  //     {
+  //       path: "/",
+  //       element: <Test />,
+  //     },
+  //   ]);
 
-  return element;
+  return router;
 };
 export default Routes;
