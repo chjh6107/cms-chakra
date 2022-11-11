@@ -1,7 +1,7 @@
 const IndexPage = () => {
   return (
     <div>
-      <div className={``}></div>
+      <div className={``}>123</div>
     </div>
   );
 };
