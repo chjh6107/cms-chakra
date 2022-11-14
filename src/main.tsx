@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import "src/styles/globals.css";
+import theme from "./styles/theme";
 
 const Signin = lazy(() => import("src/pages/signin"));
 const IndexPage = lazy(() => import("src/pages/index"));
@@ -30,7 +31,7 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <CSSReset />
       <Suspense>
         <RouterProvider router={router} />

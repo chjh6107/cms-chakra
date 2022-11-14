@@ -35,14 +35,15 @@ const SigninPage = () => {
       <div className={`flex flex-col items-center justify-center gap-4`}>
         <div className={`flex flex-col items-center gap-4`}>
           <h2 className={`text-[32px] font-semibold leading-[130%]`}>
-            관리자 로그인
+            {VARIABLES.TITLE}
           </h2>
-          <h1 className={`text-text-second`}>{VARIABLES.TITLE}</h1>
+          <h1 className={`text-text-second`}>관리자 로그인</h1>
         </div>
         <form onSubmit={onSubmit} className={`w-[512px] bg-white`}>
           <FormControl>
             <FormLabel>ID</FormLabel>
             <Input
+              className={``}
               {...register("id", {
                 required: "아이디를 입력해주세요.",
                 minLength: { value: 3, message: "3자 이상" },
