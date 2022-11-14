@@ -17,9 +17,9 @@ const SigninPage = () => {
 
   return (
     <div className={``}>
-      <div>
+      <div className={`w-[512px]`}>
         <form onSubmit={onSubmit}>
-          <FormControl display={"flex"} alignItems={"center"}>
+          <FormControl>
             <FormLabel>ID</FormLabel>
             <Input {...register("id")} placeholder="아이디를 입력해주세요." />
           </FormControl>
