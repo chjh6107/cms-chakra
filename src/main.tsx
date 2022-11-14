@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import jwtDecode from "jwt-decode";
 import { lazy, StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
@@ -31,6 +31,7 @@ const router = createBrowserRouter(
 createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
     <ChakraProvider>
+      <CSSReset />
       <Suspense>
         <RouterProvider router={router} />
       </Suspense>
