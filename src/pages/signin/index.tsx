@@ -1,10 +1,14 @@
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import {
   Button,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Input,
+  InputGroup,
+  InputRightElement,
   Link,
+  useBoolean,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +20,7 @@ type SigninType = {
 };
 
 const SigninPage = () => {
+  const [isBlind, setIsBlind] = useBoolean(true);
   const navigate = useNavigate();
   const {
     register,
@@ -34,43 +39,61 @@ const SigninPage = () => {
     <main className={`w-screen h-screen grid place-items-center`}>
       <div className={`flex flex-col items-center justify-center gap-4`}>
         <div className={`flex flex-col items-center gap-4`}>
-          <h2 className={`text-[32px] font-semibold leading-[130%]`}>
+          <h1 className={`text-[32px] font-semibold leading-[130%]`}>
             {VARIABLES.TITLE}
-          </h2>
-          <h1 className={`text-text-second`}>관리자 로그인</h1>
+          </h1>
+          <h2 className={`text-text-second`}>관리자 로그인</h2>
         </div>
-        <form onSubmit={onSubmit} className={`w-[436px] bg-white`}>
-          <FormControl>
-            <FormLabel>ID</FormLabel>
-            <Input
-              className={``}
-              {...register("id", {
-                required: "아이디를 입력해주세요.",
-                minLength: { value: 3, message: "3자 이상" },
-              })}
-              placeholder="아이디를 입력해주세요."
-            />
-            <FormErrorMessage>
-              {errors.id && errors.id?.message}
-            </FormErrorMessage>
-          </FormControl>
-          <FormControl>
-            <FormLabel>패스워드</FormLabel>
-            <Input
-              {...register("password")}
-              placeholder="패스워드를 입력해주세요."
-              type={"password"}
-            />
-          </FormControl>
-          <div className={`flex flex-col`}>
+        <form
+          onSubmit={onSubmit}
+          className={`w-[436px] bg-white flex flex-col items-center`}
+        >
+          <div className={`flex flex-col w-full gap-4`}>
+            <FormControl isInvalid={!!errors.id}>
+              <FormLabel className={`text-text-second`}>ID</FormLabel>
+              <Input
+                autoComplete="off"
+                {...register("id", {
+                  required: "아이디를 입력해주세요.",
+                })}
+                placeholder="아이디를 입력해주세요."
+              />
+              <FormErrorMessage>
+                {errors.id && errors.id.message}
+              </FormErrorMessage>
+            </FormControl>
+            <FormControl isInvalid={!!errors.password}>
+              <FormLabel className={`text-text-second`}>패스워드</FormLabel>
+              <InputGroup>
+                <Input
+                  autoComplete="off"
+                  {...register("password", {
+                    required: "패스워드를 입력해주세요.",
+                  })}
+                  placeholder="패스워드를 입력해주세요."
+                  type={isBlind ? "password" : "text"}
+                />
+                <InputRightElement>
+                  <button type="button" onClick={setIsBlind.toggle}>
+                    {isBlind ? <ViewIcon /> : <ViewOffIcon />}
+                  </button>
+                </InputRightElement>
+              </InputGroup>
+              <FormErrorMessage>
+                {errors.password && errors.password.message}
+              </FormErrorMessage>
+            </FormControl>
+          </div>
+          <div className={`mt-8`}>
             <Button
               type="submit"
-              className={`w-[188px]`}
+              className={`px-6 py-2`}
               colorScheme={"primary"}
             >
-              로그인
+              <div className={`w-[140px]`}>
+                <p className={`leading-[175%]`}>로그인</p>
+              </div>
             </Button>
-            <Button className={`w-[188px]`}>without colorScheme</Button>
           </div>
         </form>
       </div>
