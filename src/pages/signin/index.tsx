@@ -39,7 +39,7 @@ const SigninPage = () => {
           </h2>
           <h1 className={`text-text-second`}>관리자 로그인</h1>
         </div>
-        <form onSubmit={onSubmit} className={`w-[512px] bg-white`}>
+        <form onSubmit={onSubmit} className={`w-[436px] bg-white`}>
           <FormControl>
             <FormLabel>ID</FormLabel>
             <Input
@@ -62,10 +62,16 @@ const SigninPage = () => {
               type={"password"}
             />
           </FormControl>
-          <Button type="submit" className={`w-[200px]`}>
-            로그인
-          </Button>
-          {/* </div> */}
+          <div className={`flex flex-col`}>
+            <Button
+              type="submit"
+              className={`w-[188px]`}
+              colorScheme={"primary"}
+            >
+              로그인
+            </Button>
+            <Button className={`w-[188px]`}>without colorScheme</Button>
+          </div>
         </form>
       </div>
     </main>
