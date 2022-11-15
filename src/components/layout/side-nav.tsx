@@ -18,12 +18,14 @@ export const getMainRoute = () =>
 
 const SideNav = () => {
   return (
-    <div className={`w-[256px]`}>
+    <nav className={`w-[256px] h-screen bg-bg`}>
       {/* logo */}
-      <div className={`h-[76px]`}>{VARIABLES.TITLE}</div>
+      <div className={`h-[76px] border-b border-b-bg-second`}>
+        {VARIABLES.TITLE}
+      </div>
       {/* nav items */}
-      <div></div>
-    </div>
+      <div>items</div>
+    </nav>
   );
 };
 export default SideNav;

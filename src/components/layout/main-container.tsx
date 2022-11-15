@@ -16,10 +16,12 @@ export const loader: LoaderFunction = () => {
 
 const MainContainer = () => {
   return (
-    <div className={`min-w-[1600px] min-h-screen bg-bg-second`}>
+    <div className={`min-w-[1600px] flex min-h-screen bg-bg-second`}>
       {/* side-nav */}
-      <SideNav />
-      <div>
+      <div className={`flex-1`}>
+        <SideNav />
+      </div>
+      <div className={`w-full`}>
         {/* header */}
         <Header />
         {/* page components */}
