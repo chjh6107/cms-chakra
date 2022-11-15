@@ -11,4 +11,8 @@ export default defineConfig({
       "@components": resolve(__dirname, "./src/components/"),
     },
   },
+  server: {
+    host: true,
+    port: 3000,
+  },
 });

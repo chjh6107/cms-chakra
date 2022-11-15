@@ -7,12 +7,20 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Link,
   useBoolean,
 } from "@chakra-ui/react";
+import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { VARIABLES } from "src/common/variables";
+import { useCustomToast } from "src/hooks";
+
+const DummyAdminInfo = {
+  ID: "admin",
+  PW: "qwer123$",
+};
+const token =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoxLCJpYXQiOjE2NjgzOTExMzAsImV4cCI6MTY2ODk5NTkzMH0.5mu-CxGNylv9wTBc0EJugbvArfRLTSwdeqqjx3d2yWg";
 
 type SigninType = {
   id: string;
@@ -21,7 +29,9 @@ type SigninType = {
 
 const SigninPage = () => {
   const [isBlind, setIsBlind] = useBoolean(true);
+  const toast = useCustomToast();
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -31,8 +41,16 @@ const SigninPage = () => {
   });
 
   const onSubmit = handleSubmit((v) => {
-    console.log(errors);
-    alert(v.id + " " + v.password);
+    const { id, password } = v;
+    if (id !== DummyAdminInfo.ID || password !== DummyAdminInfo.PW)
+      return toast({
+        title: "아이디 또는 패스워드가 일치하지 않습니다.",
+        status: "error",
+      });
+
+    Cookies.set(VARIABLES.ACCESS_TOKEN, token);
+    Cookies.set(VARIABLES.REFRESH_TOKEN, token);
+    navigate("/");
   });
 
   return (
@@ -50,7 +68,7 @@ const SigninPage = () => {
         >
           <div className={`flex flex-col w-full gap-4`}>
             <FormControl isInvalid={!!errors.id}>
-              <FormLabel className={`text-text-second`}>ID</FormLabel>
+              <FormLabel className={`text-text-second`}>아이디</FormLabel>
               <Input
                 autoComplete="off"
                 {...register("id", {
@@ -87,8 +105,10 @@ const SigninPage = () => {
           <div className={`mt-8`}>
             <Button
               type="submit"
-              className={`px-6 py-2`}
-              colorScheme={"primary"}
+              px={6}
+              py={2}
+              // className={`px-6 py-2`}
+              // colorScheme={"primary"}
             >
               <div className={`w-[140px]`}>
                 <p className={`leading-[175%]`}>로그인</p>

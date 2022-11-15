@@ -10,10 +10,10 @@ import theme from "./common/theme";
 const Signin = lazy(() => import("src/pages/signin"));
 const IndexPage = lazy(() => import("src/pages/index"));
 
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoxLCJpYXQiOjE2NjgzOTExMzAsImV4cCI6MTY2ODk5NTkzMH0.5mu-CxGNylv9wTBc0EJugbvArfRLTSwdeqqjx3d2yWg";
-const decoded = jwtDecode(token);
-console.log(decoded);
+// const token =
+//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoxLCJpYXQiOjE2NjgzOTExMzAsImV4cCI6MTY2ODk5NTkzMH0.5mu-CxGNylv9wTBc0EJugbvArfRLTSwdeqqjx3d2yWg";
+// const decoded = jwtDecode(token);
+// console.log(decoded);
 
 const router = createBrowserRouter(
   [
