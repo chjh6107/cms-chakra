@@ -1,4 +1,4 @@
 const Error = () => {
-  return <div>Error</div>;
+  return <div className={`text-center`}>404 Not Found</div>;
 };
 export default Error;

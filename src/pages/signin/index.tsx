@@ -50,7 +50,7 @@ const SigninPage = () => {
 
     Cookies.set(VARIABLES.ACCESS_TOKEN, token);
     Cookies.set(VARIABLES.REFRESH_TOKEN, token);
-    navigate("/signin", { replace: true });
+    navigate("/", { replace: true });
   });
 
   return (

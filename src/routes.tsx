@@ -17,10 +17,7 @@ const Routes = () => {
     {
       path: "/",
       loader: authLoader,
-      element: (
-        // 토큰을 가지고 있고 디코딩 한 토큰에 adminId 값이 있다면 메인컨테이너 아니면 로그인 페이지
-        <MainContainer />
-      ),
+      element: <MainContainer />,
       children: [
         {
           path: "equipment",
