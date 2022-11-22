@@ -20,7 +20,7 @@ const DummyAdminInfo = {
   PW: "qwer123$",
 };
 const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoxLCJpYXQiOjE2NjgzOTExMzAsImV4cCI6MTY2ODk5NTkzMH0.5mu-CxGNylv9wTBc0EJugbvArfRLTSwdeqqjx3d2yWg";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoxLCJpYXQiOjE2NjgzOTExMzAsImV4cCI6MTY2ODk5NTkzMCwiVGhpcyBpcyI6ImR1bW15ISEhISEhISEhISJ9.yjgKKXzSLWE1u7CTKI7S0MIShnLPKej7GWhMTq6jhcE";
 
 type SigninType = {
   id: string;

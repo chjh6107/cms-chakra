@@ -1,11 +1,17 @@
 import { Spinner } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 import jwtDecode from "jwt-decode";
-import { Suspense } from "react";
-import { LoaderFunction, Outlet, redirect } from "react-router-dom";
+import { Suspense, useEffect } from "react";
+import {
+  LoaderFunction,
+  Outlet,
+  redirect,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { VARIABLES } from "src/common/variables";
 import Header from "./header";
-import SideNav from "./side-nav";
+import SideNav, { mainRoute } from "./side-nav";
 
 export const loader: LoaderFunction = () => {
   const token = Cookies.get(VARIABLES.ACCESS_TOKEN);
@@ -16,6 +22,17 @@ export const loader: LoaderFunction = () => {
 };
 
 const MainContainer = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (pathname === "/") {
+      navigate(mainRoute);
+    } else if (pathname !== "/" && pathname.slice(-1) === "/") {
+      navigate(pathname.replace(/\/+$/, ""), { replace: true });
+    }
+  }, []);
+
   return (
     <div className={`min-w-[1600px] flex min-h-screen bg-bg-second`}>
       {/* side-nav */}

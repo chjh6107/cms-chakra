@@ -33,18 +33,24 @@ const Header = () => {
         leastDestructiveRef={logoutRef}
       >
         <AlertDialogOverlay>
-          <AlertDialogContent>
-            <AlertDialogHeader fontWeight="bold">
-              관리자 로그아웃
+          <AlertDialogContent
+            sx={{ "--my-color": "#53c8c4", "--my-color-red": "#ff0000" }}
+          >
+            <AlertDialogHeader fontWeight="bold" color="var(--my-color)">
+              <p>관리자 로그아웃</p>
             </AlertDialogHeader>
 
-            <AlertDialogBody>정말로 로그아웃하시겠습니까?</AlertDialogBody>
+            <AlertDialogBody>
+              <p className="text-[var(--my-color-red)]">
+                정말로 로그아웃하시겠습니까?
+              </p>
+            </AlertDialogBody>
 
             <AlertDialogFooter>
               <Button colorScheme={"gray"} onClick={onClose}>
                 아니오
               </Button>
-              <Button onClick={onLogout} ml={3}>
+              <Button autoFocus onClick={onLogout} ml={3}>
                 네
               </Button>
             </AlertDialogFooter>
@@ -53,7 +59,9 @@ const Header = () => {
       </AlertDialog>
       <header className={`sticky w-full bg-bg h-[76px]`}>
         <div>
-          <button onClick={onOpen}>로그아웃</button>
+          <button onClick={onOpen} className={`text-[var(--my-color)]`}>
+            로그아웃
+          </button>
         </div>
       </header>
     </>

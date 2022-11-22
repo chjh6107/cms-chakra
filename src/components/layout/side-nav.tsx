@@ -12,9 +12,10 @@ const sideMenu: MenuType[] = [
   },
 ];
 
-/** 메인 주소를 찾는 함수 */
-export const getMainRoute = () =>
-  sideMenu[0].chiildren ? sideMenu[0].chiildren[0].href : sideMenu[0].href;
+/** 메인 주소 */
+export const mainRoute = sideMenu[0].chiildren
+  ? sideMenu[0].chiildren[0].href
+  : sideMenu[0].href;
 
 const SideNav = () => {
   return (

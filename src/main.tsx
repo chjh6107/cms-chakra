@@ -1,6 +1,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { ChakraProvider, CSSReset } from "@chakra-ui/react";
-import { StrictMode, Suspense, useEffect } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 
 import "src/styles/globals.css";
